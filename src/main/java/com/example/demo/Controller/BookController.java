@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.demo.Entity.BookList;
 import com.example.demo.Service.BookService;
+import com.example.demo.Service.RentalService;
 
 import lombok.Data;
 
@@ -21,6 +22,8 @@ public class BookController {
 
 	@Autowired
 	BookService bookService;
+	@Autowired
+	RentalService rentalService;
 
 	//アクセス時にユーザーを一覧で取得
 	@GetMapping("/list")
@@ -47,7 +50,7 @@ public class BookController {
 	public String createBook(@ModelAttribute("createBook") BookList bookList) {
 		//System.out.println(bookList);
 		bookService.createBook(bookList);
-		return "redirect:/book/info";
+		return "redirect:/book/list";
 	}
 
 	//ユーザーの編集反映処理
@@ -55,7 +58,14 @@ public class BookController {
 	public String editBook(@ModelAttribute("editBook") BookList bookList) {
 		System.out.println(bookList);
 		bookService.editBook(bookList);
-		return "redirect:/book/info";
+		return "redirect:/book/list";
+	}
+	
+	@PostMapping("/rental/{book_id}")
+	public String rental(@PathVariable int book_id) {
+		System.out.println(book_id);
+		rentalService.rental(book_id);
+		return "redirect:/book/list";
 	}
 
 	//ユーザーの削除処理
@@ -63,7 +73,15 @@ public class BookController {
 	public String deleteBook(@PathVariable int book_id) {
 		//System.out.println(book_id);
 		bookService.deleteBook(book_id);
-		return "redirect:/book/info";
+		return "redirect:/book/list";
 	}
+
+	@GetMapping("/details/{book_id}")
+	public String details(@PathVariable int book_id, Model model) {
+		model.addAttribute("TargetBook", bookService.targetBook(book_id));
+		return "bookdetails";
+	}
+	
+
 
 }

@@ -13,11 +13,11 @@
 </body>
 <header th:replace="header :: header"></header>
 <br>
-<h2 class="container">Book_Edit</h2>
+<h2 class="container">Book_Details</h2>
 <br>
 <div class="form-box container">
 	<!-- class="form-box container" -->
-	<form th:each="book: ${TargetBook}" th:action="@{/book/bookedit}" th:object="${editBook}" method="post">
+	<form th:each="book:${TargetBook}" th:action="@{/book/rental/{book_id}(book_id=*{book.book_id})}" method="post">
 
 		<div class="form-group ">
 			<label for="text1">Name:</label> <input th:placeholder="${book.book_name}" type="text" name="book_name"
@@ -41,10 +41,9 @@
 		<br>
 		<br> <br>
 		<div class="d-grid gap-4 btn-block d-md-flex justify-content-md-end">
-			<button class="btn  btn-primary  w-25" type="submit">Edit</button>
+			<button class="btn  btn-primary  w-25" type="submit">Rental</button>
 		</div>
-		<input type="hidden" class="" id="" name="book_id" th:value="${book_id}"></input>
-
+		
 	</form>
 </div>
 <!-- class="form-box container" -->
