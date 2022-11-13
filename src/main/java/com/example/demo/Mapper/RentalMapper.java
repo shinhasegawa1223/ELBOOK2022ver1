@@ -6,5 +6,7 @@ import org.apache.ibatis.annotations.Mapper;
 public interface RentalMapper {
 	
 	void rental(int book_id);
+	
+	void returnBook(int book_id);
 
 }

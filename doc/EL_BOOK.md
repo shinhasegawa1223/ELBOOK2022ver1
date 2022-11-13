@@ -15,3 +15,4 @@
 | 5    |book_releasetime|   date    | ●       |        |                          |
 | 6    |create_time     | timestamp | ●       |        |                          |
 | 7    |update_time     | datetime  | ●       |        |                          |
+| 8    |stock           |    int    | ●       |        |                          |
