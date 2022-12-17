@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<h1>testimage</h1>
+<h2>画像アップロード</h2>
+  <form action="/test/uploadimage" method="post" enctype="multipart/form-data" >
+      <input type="file" name="file" onchange="previewFile(this);" accept="image/jpeg" required>
+      <input type="submit" value="送信する">
+  </form>
+<img id="preview">
+
+
+  <script>
+  function previewFile(hoge){
+    var fileData = new FileReader();
+    fileData.onload = (function() {
+      //id属性が付与されているimgタグのsrc属性に、fileReaderで取得した値の結果を入力することで
+      //プレビュー表示している
+      document.getElementById('preview').src = fileData.result;
+    });
+    fileData.readAsDataURL(hoge.files[0]);
+  }
+  </script>
+
+
+<p>test</p>
+<img src="/images/01_spy.jpg" alt="代替テキスト">
+<img src="/images/picture.jpg" alt="代替テキスト">
+
+<th:block th:each="i : ${#numbers.sequence(1,5)}">
+    <p th:text="${i}"></p><!-- 0 1 2 3が出力される -->
+    <img th:src="@{/images/0{i1}_spy.jpg(i1=${i})}" alt="代替テキスト">
+</th:block>
+</body>
+</html>
