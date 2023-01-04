@@ -63,6 +63,8 @@ show columns from  el_user;
 
 INSERT INTO el_user values (15,'city','test@com','92e7d0ed04e062d134b011232169e07634bb34e4f745a22db05e5a676e778b1d358a028ad7d37b01',now(),0);
 
+INSERT INTO el_user values (16,'tako','test@com','8173fe759c718bf523c7dd84f8d5aebdb127c20dc823969d64f9e6158df94bdf13a805516efdc6f5',now(),0);
+
 alter table el_user add column authority enum('ADMIN','USER') ;
 
 update el_user set authority = 'ADMIN' where user_name = 'city';
