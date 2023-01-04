@@ -24,12 +24,12 @@ public class UserList {
 	
 	private Date create_time;
 	private boolean delete_flg;
-//	private Authority authority;
+	private Authority authority;
 	
-//	public enum Authority{
-//		ADMIN,
-//		USER,
-//	}
+	public enum Authority{
+		ADMIN,
+		USER,
+	}
 
 }
 

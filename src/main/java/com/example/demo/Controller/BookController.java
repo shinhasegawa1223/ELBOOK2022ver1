@@ -1,6 +1,7 @@
 package com.example.demo.Controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,8 +13,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.example.demo.Entity.BookList;
 import com.example.demo.Service.BookService;
 import com.example.demo.Service.RentalService;
+import com.example.demo.Service.auth.CustomUserDetails;
 
 import lombok.Data;
+
 
 @Controller
 @Data
@@ -25,10 +28,15 @@ public class BookController {
 	@Autowired
 	RentalService rentalService;
 
+
+
 	//アクセス時にユーザーを一覧で取得
 	@GetMapping("/list")
-	public String findBook(Model model) {
+	public String findBook(@AuthenticationPrincipal CustomUserDetails test,Model model) {
 		model.addAttribute("BookList", bookService.findBook());
+		System.out.println(test);
+
+		
 		return "booklist";
 	}
 

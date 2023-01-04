@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+		xmlns:sec="http://www.thymeleaf.org/extras/spring-security5">
 
 <head>
 	<meta charset="UTF-8">
@@ -12,6 +13,7 @@
 
 <body>
 	<header th:replace="header :: header"></header>
+	<!--<span th:text="${#authentication.principal}">text</span>-->
 	<table class="table">
 		<thead class="table-dark">
 			<tr>

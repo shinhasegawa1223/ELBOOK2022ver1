@@ -52,3 +52,20 @@ CREATE  TABLE EL_USER  (
 , dlt_flg boolean default 0 not null
 ) ;
  ```
+
+セキュリティ関係の追加
+```
+show columns from  el_user;
+
+alter table el_user modify pass varchar(200) ;
+
+show columns from  el_user;
+
+INSERT INTO el_user values (15,'city','test@com','92e7d0ed04e062d134b011232169e07634bb34e4f745a22db05e5a676e778b1d358a028ad7d37b01',now(),0);
+
+alter table el_user add column authority enum('ADMIN','USER') ;
+
+update el_user set authority = 'ADMIN' where user_name = 'city';
+
+update el_user set authority = 'USER' where user_name = 'tako';
+```

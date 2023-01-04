@@ -1,11 +1,16 @@
 package com.example.demo.Service.auth;
 
 import java.util.Collections;
+import java.util.List;
 
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+
+import com.example.demo.Entity.UserList;
 
 import lombok.RequiredArgsConstructor;
 
@@ -22,8 +27,8 @@ public class CustomUserDetailsService implements UserDetailsService {
 						user -> new CustomUserDetails(
 								user.getUser_name(),
 								user.getPass(),
-								Collections.emptyList()
-								//toGrantedAuthorityList(user.getAuthority())
+//								Collections.emptyList()
+								toGrantedAuthorityList(user.getAuthority())
 						)
 				)
 				.orElseThrow(
@@ -33,9 +38,8 @@ public class CustomUserDetailsService implements UserDetailsService {
 				);
 	}
 		
-//		private List<GrantedAuthority>toGrantedAuthorityList(UserList.Authority authority){
-//			return Collections.singletonList(new SimpleGrantedAuthority(authority.name()));
-			
-//	}
+		private List<GrantedAuthority>toGrantedAuthorityList(UserList.Authority authority){
+			return Collections.singletonList(new SimpleGrantedAuthority(authority.name()));		
+	}
 
 }
