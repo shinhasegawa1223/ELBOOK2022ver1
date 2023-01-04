@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security5">
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
@@ -22,6 +22,7 @@
 												<li class="nav-item"><a class="nav-link active" aria-current="page" th:href="@{/book/list}">Book_List</a></li>
 												<li class="nav-item"><a class="nav-link" th:href="@{/user/createview}">User_Create</a></li>
 												<li class="nav-item"><a class="nav-link" th:href="@{/book/createview}">Book_Create</a></li>
+												<li class="nav-item" sec:authorize="hasAuthority('ADMIN')"><a class="nav-link" href="#">ユーザー新規追加</a></li>
 												<!-- 		<li class="nav-item"><a class="nav-link" href="#">Pricing</a></li> -->
 												<!-- 	<li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false"> Dropdown link
 												</a>

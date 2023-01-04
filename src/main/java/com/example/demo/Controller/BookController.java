@@ -34,8 +34,7 @@ public class BookController {
 	@GetMapping("/list")
 	public String findBook(@AuthenticationPrincipal CustomUserDetails test,Model model) {
 		model.addAttribute("BookList", bookService.findBook());
-		System.out.println(test);
-
+//		System.out.println(test);
 		
 		return "booklist";
 	}
