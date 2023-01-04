@@ -26,7 +26,7 @@ public class UserController {
 
 	@GetMapping("/list")
 	public String findUser(Model model) {
-
+		//var x = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		model.addAttribute("UserList", userService.findUser());
 		return "userlist";
 	}
@@ -55,7 +55,7 @@ public class UserController {
 	//ユーザーの編集反映処理
 	@PostMapping("/useredit")
 	public String editUser(@ModelAttribute("editUser") UserList userList) {
-		//System.out.println(userList);
+		System.out.println("edit" + userList.getPass());
 		userService.editUser(userList);
 		return "redirect:/user/list";
 	}

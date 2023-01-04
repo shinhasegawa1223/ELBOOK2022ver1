@@ -11,14 +11,14 @@
 
 	<!-- idにMapperクラスのメソッドを指定する -->
 	<select id="findUser" resultMap="Base_Result_Map">
-		SELECT user_id, user_name, mail,pass, create_time
+		SELECT user_id, user_name, mail, pass, create_time, delete_flg
 		FROM EL_USER
 		WHERE delete_flg = 0
 	</select>
 
 	<select id="targetUser" resultMap="Base_Result_Map"
 		parameterType="com.example.demo.Entity.UserList">
-		SELECT user_id, user_name, mail, pass, create_time
+		SELECT user_id, user_name, mail, pass, create_time, delete_flg
 		FROM EL_USER
 		WHERE user_id =#{user_id};
 	</select>

@@ -2,18 +2,34 @@ package com.example.demo.Entity;
 
 import java.sql.Date;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
+
 import lombok.Data;
 
 @Data
 public class UserList {
 
 	private int user_id;
-	private String user_name;
-	private String admin_flg;
-	private String mail;
-	private String pass;
-	private Date create_time;
 	
+	@NotBlank
+	private String user_name;
+	
+	@NotBlank
+	private String mail;
+	
+	@NotBlank
+	@Size(min = 12, max = 200)
+	private String pass;
+	
+	private Date create_time;
+	private boolean delete_flg;
+//	private Authority authority;
+	
+//	public enum Authority{
+//		ADMIN,
+//		USER,
+//	}
 
 }
 

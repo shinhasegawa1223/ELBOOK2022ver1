@@ -12,7 +12,7 @@ public interface UserMapper {
 	//Listを使用してあたいを格納する　引数は無し
 	List<UserList> findUser();
 
-	List<UserList> targetUser(int user_id);
+	UserList targetUser(int user_id);
 
 	void createUser(UserList userList);
 

@@ -6,25 +6,9 @@
 		<id column="book_id" property="book_id" jdbcType="INTEGER" />
 	</resultMap>
 
-
-<!-- ToDo
-在庫数を-ロジックを作成する -->
-
 	<insert id="rental" parameterType="com.example.demo.Entity.Rental">
 	INSERT INTO EL_RENT	(user_id, book_id, rent_day)
 	VALUES(90, #{book_id}, now());
 	</insert>
-
-
-<!-- ToDo
-在庫数を＋するロジックを作成する -->
-
-	<update id="rentalBook" parameterType="com.example.demo.Entity.Rental">
-	UPDATE EL_RENT 
-	SET return_day  = now() ,
-		dlt_flg = 1
-	WHERE rent_id = 2;
-	</update>
-
 
 </mapper>
